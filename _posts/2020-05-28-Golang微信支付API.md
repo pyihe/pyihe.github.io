@@ -8,7 +8,8 @@ tags: 微信开发
 
 # [wechat-sdk](https://github.com/pyihe/wechat-sdk)
 
-##### 功能列表
+### 一. 功能列表
+已经实现的功能如下:
 
 | 方法名  |  解释 |  备注 |
 | :---- | :----| :----|
@@ -41,7 +42,7 @@ tags: 微信开发
 
 **Notice: 所有请求接口都不需要加入appid/mch_id/key/secret/sign参数**
 
-##### 使用方法
+### 二. 使用方法
 
 ```
 package main
@@ -108,7 +109,6 @@ func main() {
     }
     fmt.Printf("user phone is %s\n", phone)
 }
-
 ```
 
 ```
@@ -137,5 +137,4 @@ func main() {
 	})
 	http.ListenAndServe(":8810", nil)
 }
-
 ```
