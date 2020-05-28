@@ -3,10 +3,11 @@ layout: post
 title: 'Mac通过homebrew安装supervisor，并添加process'
 date: 2020-05-30
 author: pyihe
-tags: 学习
+tags: 工具
 ---
 
-## 安装supervisor
+## 一. 安装supervisor
+
 ### 执行安装命令
 ```shell script
     brew search supervisor
@@ -31,7 +32,7 @@ tags: 学习
 配置完毕后即可通过supervisorctl管理process，执行supervisorctl可查看process列表以及运行状态:<br>
 ![](/assets/img/2020-05-30/查看process.jpg)
 
-##添加process(举例etcd)
+## 二. 添加process(如etcd)
 1. 在/usr/local/etc目录下新建目录supervisor.d，用于存放所有process的配置文件，进入supervisor.d并新建etcd.ini:<br>
 ![](/assets/img/2020-05-30/etcd配置.jpg)
 <br>关于etcd.ini中的每个配置项，在supervisor.ini中有说明，建议直接拷贝过来进行修改；
