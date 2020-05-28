@@ -7,7 +7,9 @@ tags: 微信开发
 ---
 
 # [wechat-sdk](https://github.com/pyihe/wechat-sdk)
+
 ##### 功能列表
+
 | 方法名  |  解释 |  备注 |
 | :---- | :----| :----|
 | GetUserPhoneForMini | 小程序获取电话号码 | 客户端调用微信接口获取加密信息时不能在回调中再次调用登陆接口, 否则会让session_key失效 |
@@ -40,6 +42,7 @@ tags: 微信开发
 **Notice: 所有请求接口都不需要加入appid/mch_id/key/secret/sign参数**
 
 ##### 使用方法
+
 ```
 package main
 
