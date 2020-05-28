@@ -3,7 +3,7 @@ layout: post
 title: 'Golang微信支付API'
 date: 2020-05-28
 author: pyihe
-tags: 微信开发
+tags: Golang
 ---
 
 # [wechat-sdk](https://github.com/pyihe/wechat-sdk)
@@ -44,12 +44,12 @@ tags: 微信开发
 
 ### 二. 使用方法
 
-```
+```go
 package main
 
 import (
 	"fmt"
-	dev "github.com/hong008/wechat-sdk"
+	dev "github.com/pyihe/wechat-sdk"
 )
 
 func main() {
@@ -70,7 +70,7 @@ func main() {
 	if err != nil {
 		handleErr(err)
 	}
-    appId, _ := result.GetString("apppid")
+    appId, _ = result.GetString("apppid")
     prepayId, _ := result.GetString("prepay_id")
     param = dev.NewParam()
     param.Add("appId", appId)
@@ -81,21 +81,19 @@ func main() {
     //use to evoke wechat pay 
     sign := param.Sign("MD5")
 
-
     //download bill
 	param = dev.NewParam()
 	param.Add("nonce_str", "yourNonceStr")
 	param.Add("bill_date", "yourDate")
 	param.Add("bill_type", "ALL")
 	param.Add("tar_type", "GZIP")
-	err := client.DownloadBill(param, "./bill")
+	err = client.DownloadBill(param, "./bill")
 	if err != nil {
 		handleErr(err)
 	}
     
-
     //get phone for mini program user
-    result, err := client.GetUserPhoneForMini("code", "encryptedData", "iv")
+    result, err = client.GetUserPhoneForMini("code", "encryptedData", "iv")
     if err != nil {
     	handleErr(err)
     }
@@ -111,14 +109,14 @@ func main() {
 }
 ```
 
-```
+```go
 package main
 
 import (
 	"fmt"
 	"net/http"
 	
-	dev "github.com/hong008/wechat-sdk"
+	dev "github.com/pyihe/wechat-sdk"
 )
 
 func main() {
