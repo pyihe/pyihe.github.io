@@ -11,6 +11,8 @@ tags: 微信开发
 ### 一. 功能列表
 已经实现的功能如下:
 
+**Notice: 所有请求接口都不需要加入appid/mch_id/key/secret/sign等参数**
+
 | 方法名  |  解释 |  备注 |
 | :---- | :----| :----|
 | GetUserPhoneForMini | 小程序获取电话号码 | 客户端调用微信接口获取加密信息时不能在回调中再次调用登陆接口, 否则会让session_key失效 |
@@ -31,16 +33,14 @@ tags: 微信开发
 | TransfersQuery | 查询企业付款到用户零钱的结果 |  |
 | TransferBank | 企业付款到银行卡 | 未测试 |
 | TransferBankQuery | 查询企业付款到银行卡的结果 | 未测试 |
-| UnifiedMicro | 扫码下单 | 如果需要传detail参数, 参数格式参照[单品优惠活动detail字段列表说明](https://pay.weixin.qq.com/wiki/doc/api/danpin.php?chapter=9_102&index=2) |
+| UnifiedMicro | 扫码下单 | 如果需要传detail参数, 参数格式参照[*单品优惠活动detail字段列表说明*](https://pay.weixin.qq.com/wiki/doc/api/danpin.php?chapter=9_102&index=2) |
 | UnifiedOrder | 统一下单: H5/APP/MWEB/NATIVE | 返回给前端的唤起支付参数中, package = prepay_id=xxxxxxx |
 | UnifiedQuery | 下单结果查询 |  |
 | GetAppBaseAccessToken | 公众号开发获取基础接口调用Access_Token | 用于调用其他接口 |
 | GetAppOauthAccessToken | 公众号开发通过code获取网页授权Access_Token | 此Access_Token用于拉取用户信息, code只能用一次 |
 | RefreshOauthToken | 公众号开发刷新网页授权Access_Token ||
-| GetAppUserInfo | 公众号开发拉取用户信息 | 返回结果参考[微信文档](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_authorization.html) |
+| GetAppUserInfo | 公众号开发拉取用户信息 | 返回结果参考[*微信文档*](https://developers.weixin.qq.com/doc/offiaccount/OA_Web_Apps/Wechat_webpage_authorization.html) |
 | CheckOauthToken | 公众号开发校验网页授权Access_Token是否有效 ||
-
-**Notice: 所有请求接口都不需要加入appid/mch_id/key/secret/sign参数**
 
 ### 二. 使用方法
 
