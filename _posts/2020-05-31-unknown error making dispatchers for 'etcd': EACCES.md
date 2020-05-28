@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'supervisior启动进程时报错: unknown error making dispatchers for 'etcd': EACCES'
+title: 'unknown error making dispatchers for 'etcd': EACCES'
 date: 2020-05-31
 author: pyihe
 tags: 学习
