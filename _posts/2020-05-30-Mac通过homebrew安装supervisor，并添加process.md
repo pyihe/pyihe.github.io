@@ -9,21 +9,21 @@ tags: 工具
 ## 一. 安装supervisor
 
 ### 执行安装命令
-```shell script
-    brew search supervisor
-    brew install supervisor
+```
+brew search supervisor
+brew install supervisor
 ```
 
 ### 安装后的配置
 安装成功后，会有提示是否需要让supervisor随系统启动，需要的话执行命令：
-```shell script
-    brew services start supervisor
+```
+brew services start supervisor
 ```
 安装成功后，supervisor的安装目录为：/usr/local/Cellar/supervisor， supervisor配置文件supervisord.ini在/usr/local/etc下
 
 **注：安装成功后执行supervisorctl时需要带参数, 否则会报错: "http://localhost:9001 refused connection"**
-```shell script
-    supervisorctl -c /usr/local/etc/supervisord.ini
+```
+supervisorctl -c /usr/local/etc/supervisord.ini
 ```
 解决办法是在配置文件中取消一行代码注释，如下图:<br>
 ![](/assets/img/2020-05-30/取消注释.jpg)
