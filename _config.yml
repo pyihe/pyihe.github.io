@@ -37,9 +37,9 @@ search: true
 nightMode: true
 
 # Comments 评论功能 true or false
-comments:
-  disqus: true
-  disqus_url: ''
+#comments:
+#  gitment: true
+#  disqus_url: ''
 
 # MathJax 公式支持 by Ray-Eldath
 mathjax: true
