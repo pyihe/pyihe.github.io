@@ -6,18 +6,21 @@ author: pyihe
 tags: [Golang, 译文]
 ---
 
-### 前言
+## 前言
+
 这是一篇译文，网上有很多关于这篇文章的翻译，但这并不影响自己想自己翻译这篇文章的的愿  
 望，毕竟自己看重的是自己实践翻译这样一件事情，并且从中得到收获。
+* * *
+## 原文介绍
 
-### 原文介绍
 原文来自[Go101](https://github.com/go101/go101)，该项目被托管在Github上。
 
 原文链接为[How to Gracefully Close Channels](https://go101.org/article/channel-closing.html)，如果可以，阅读原文是最好的选择。
+* * *
+## 译文内容
 
-### 译文内容
-几天前我写了一篇解释[Go channel规则](https://go101.org/article/channel.html)的文章，  
-在[reddit](https://www.reddit.com/r/golang/comments/5k489v/the_full_list_of_channel_rules_in_golang/)和[HN](https://news.ycombinator.com/item?id=13252416)上这篇文章获得了许多赞同，但是仍然存在很多对Go channel设计细节的批判声。   
+几天前我写了一篇解释[Go channel规则](https://go101.org/article/channel.html)的文章，在[reddit](https://www.reddit.com/r/golang/comments/5k489v/the_full_list_of_channel_rules_in_golang/)和[HN](https://news.ycombinator.com/item?id=13252416)上这篇文章获得了许多赞同，但是仍然存在很多对Go channel设计细节的批判声。
+
 我收集了一些关于Go channel的以下几点设计以及规则的批判：  
 1. 在没有设定状态标志的情况下，没有简便的方法去判断一个channel是否已经关闭 
 2. 调用者不知道channel是否已经关闭的情况下去执行关闭操作是很危险的，因为关闭已关闭的channel会造成panic
@@ -53,15 +56,17 @@ func main() {
 正如上面提到的，这并不是判断一个channel是否关闭的通用方法。
 
 实际上，即使有一个简单的内置函数`closed`检查channel是否已经被关闭，但是它的作用是非常局限的，就像用于获取当前channel缓冲中的数据个数的内置函数`len`一样。原因是在一次内置函数调用刚返回后被校验的channel的状态有可能改变，所以返回值已经不能反应被校验channel的最新状态。虽然当`closed(ch)`返回`true`时停止向`ch`发送数据没问题，但是如果`closed(ch)`返回`false`，则关闭channel或者继续发送数据到channel是不安全的。
+* * *
+### channel关闭准则
 
-#### channel关闭准则
 使用Go channel的一个基本准则是***不要从receiver侧关闭channel，如果channel有多个并发的senders时也不要关闭***。换句话说，我们应该只在只有一个sender时，在sender侧关闭channel。
 
 （下面，我们将上面的准则称之为***channel关闭准则***）
 
 当然，这不是一个关闭channel的通用准则。通用准则是***不要关闭（或者发送数据到）已经关闭的channel***。如果我们能保证不再有协程关闭或者发送数据到一个没关闭和非空的channel，此时协程便可安全的关闭channel。然而，靠channel的一个receiver或者某一个sender达到这样的保障是需要很大的努力的，并且通常会使代码变得复杂。正相反，坚持上面提到的***channel关闭准则***更容易。
+* * *
+### 粗暴地关闭channel
 
-#### 粗暴地关闭channel
 如果你无论如何要从receiver侧或者多个sender中的一个关闭channel，你可以使用[恢复机制](https://go101.org/article/control-flows-more.html#panic-recover)阻止可能的panic让你的程序崩溃。这里有一个例子（假设channel元素类型是T）。
 ```go
 func SafeClose(ch chan T) (justClosed bool) {
@@ -93,8 +98,9 @@ func SafeSend(ch chan T, value T) (closed bool) {
 }
 ```
 粗暴的解决方法不仅仅违背了***channel关闭准则***，并且程序有可能出现数据竞争。
+* * *
+### 礼貌地关闭channel
 
-#### 礼貌地关闭channel
 许多人更喜欢用`sync.Once`关闭channel：
 ```go
 type MyChannel struct {
@@ -140,8 +146,9 @@ func (mc *MyChannel) IsClosed() bool {
 }
 ```
 这些方法可能很礼貌，但是它们可能无法避免数据竞争。目前，当channel关闭操作和发送操作同时发生时Go不保证没有数据竞争发生。如果同一个channel的`SafeClose`函数和发送操作同时发生，有可能发生数据竞争（虽然这种数据竞争通常不会带来多大伤害）。
+* * *
+### 优雅地关闭channel
 
-#### 优雅地关闭channel
 上面的`SafeSend`函数的一个缺点是，它的调用不能像在`select`语句块`case`关键字中的发送操作那样使用。`SafeSend`和`SafeClose`函数的另一个缺点就是很多人，包括我，可能会觉得上面使用`panic`/`recover`和`sync`包的方法并不优雅。接下来，将会介绍一些针对所有场景，纯净的，不使用`panic`/`recover`和`sync`包的channel使用方法。
 
 （在接下来的例子中，通过使用`sync.WaitGroup`让例子变得完整，在实际练习中使用它并不总是必要的。）
@@ -631,11 +638,15 @@ func main() {
     log.Println("stopped by", stoppedBy)
 }
 ```
+* * *
+#### 其他情形？
 
-##### 其他情形？
 应该还有更多的变化情形，但在上面出现的情形是最平常、最基础的情形。通过聪明地使用channel（和其他并发编程技术），我相信每个变化的情形都能找到一个坚持***channel关闭准则***的解决方案。
+* * *
 
-#### 疑问
+### 疑问
+
 没有情形会强迫你违背***channel关闭准则***，如果你遇到了这样的情形，请重新思考你的设计并重构你的代码。
+
 
 用Go语言编程就像是在进行艺术创作。
