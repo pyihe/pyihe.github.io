@@ -8,15 +8,14 @@ tags: [Golang, 译文]
 
 ## 前言
 
-这是一篇译文，网上有很多关于这篇文章的翻译，但这并不影响自己想自己翻译这篇文章的的愿  
-望，毕竟自己看重的是自己实践翻译这样一件事情，并且从中得到收获。
-* * *
+这是一篇译文，网上有很多关于这篇文章的翻译，但这并不影响自己想自己翻译这篇文章的的愿望，毕竟自己看重的是自己实践翻译这样一件事情，并且从中得到收获。
+
 ## 原文介绍
 
 原文来自[Go101](https://github.com/go101/go101)，该项目被托管在Github上。
 
 原文链接为[How to Gracefully Close Channels](https://go101.org/article/channel-closing.html)，如果可以，阅读原文是最好的选择。
-* * *
+
 ## 译文内容
 
 几天前我写了一篇解释[Go channel规则](https://go101.org/article/channel.html)的文章，在[reddit](https://www.reddit.com/r/golang/comments/5k489v/the_full_list_of_channel_rules_in_golang/)和[HN](https://news.ycombinator.com/item?id=13252416)上这篇文章获得了许多赞同，但是仍然存在很多对Go channel设计细节的批判声。
