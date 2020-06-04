@@ -34,7 +34,7 @@ avatar: '/assets/img/head_url.png'
 search: true
 
 # Night mode 夜间模式true or false
-#nightMode: true
+nightMode: true
 
 # Comments 评论功能 true or false
 comments:
