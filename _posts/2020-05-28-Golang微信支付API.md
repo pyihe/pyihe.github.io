@@ -3,7 +3,7 @@ layout: post
 title: 'Golang微信支付API'
 date: 2020-05-28
 author: pyihe
-tags: Golang
+tags: [Golang, 微信支付]
 ---
 
 # [wechat-sdk](https://github.com/pyihe/wechat-sdk)
