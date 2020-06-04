@@ -86,12 +86,3 @@ permalink: /:year/:month/:day/:title.html
 
 # Plugins
 plugins: [jekyll-paginate]
-
-#gitment
-gitment:
-  enable: true
-  githubID: pyihe
-  repo: pyihe.github.io
-  ClientID: f3b228d189832d908840
-  ClientSecret: 3bc451bb9194a1c552dc65e9ec4017726c479764
-  lazy: false
