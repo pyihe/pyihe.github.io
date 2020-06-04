@@ -37,9 +37,14 @@ search: true
 nightMode: true
 
 # Comments 评论功能 true or false
-#comments:
-#  gitment: true
-#  disqus_url: ''
+comments:
+  gitalk: true
+  gitalk_clientID: 'f3b228d189832d908840'
+  gitalk_Secret: '3bc451bb9194a1c552dc65e9ec4017726c479764'
+  gitalk_repo: 'pyihe.github.io'
+  gitalk_owner: 'pyihe'
+  gitalk_admin: 'pyihe'
+  distractionFreeMode: true
 
 # MathJax 公式支持 by Ray-Eldath
 mathjax: true
