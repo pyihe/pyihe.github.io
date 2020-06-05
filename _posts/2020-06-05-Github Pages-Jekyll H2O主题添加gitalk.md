@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'Github Pages-Jekyll H2O主题添加gitalk'
-date: 2020-06-03
+date: 2020-06-05
 author: pyihe
 tags: [学习]
 ---
