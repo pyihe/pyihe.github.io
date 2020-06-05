@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" href="/assets/css/gitalk.css">
+<script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
 {% include post-head.html %}
 
 <body>
@@ -45,6 +47,15 @@
     <div class="social-share-wrapper">
       <div class="social-share"></div>
     </div>
+    {% endif %}
+  </div>
+
+  <div>
+    {% if site.comments.gitalk %}
+    <section class="post-footer-item comment" style="padding-bottom: 2em">
+      <div id="gitalk_container"></div>
+      <div id="disqus_thread"></div>
+    </section>
     {% endif %}
   </div>
 
@@ -98,12 +109,6 @@
       </div>
       {% endif %}
     </section>
-    {% if site.comments.disqus %}
-    <section class="post-footer-item comment">
-        <div id="disqus_thread"></div>
-        <div id="gitalk_container"></div>
-    </section>
-    {% endif %}
   </section>
 
   {% include footer.html %}
@@ -140,16 +145,16 @@
   {% if site.comments.gitalk %}
   <script>
     var gitalk = new Gitalk({
+      id: location.pathname,
       clientID: '{{ site.comments.gitalk_clientID }}',
       clientSecret: '{{ site.comments.gitalk_Secret }}',
       repo: '{{ site.comments.gitalk_repo }}',
       owner: '{{ site.comments.gitalk_owner }}',
       admin: '{{ site.comments.gitalk_admin }}',
-      id: location.pathname,
       distractionFreeMode: '{{ site.comments.distractionFreeMode }}'
     })
 
-    gitalk.render('gitalk_container')
+    gitalk.render('disqus_thread')
   </script>
   {% endif %}
 
