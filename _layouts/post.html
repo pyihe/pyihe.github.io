@@ -145,7 +145,8 @@
   {% if site.comments.gitalk %}
   <script>
     var gitalk = new Gitalk({
-      id: location.pathname,
+      // id: location.pathname,
+      id: '{{page.date}}',
       clientID: '{{ site.comments.gitalk_clientID }}',
       clientSecret: '{{ site.comments.gitalk_Secret }}',
       repo: '{{ site.comments.gitalk_repo }}',
