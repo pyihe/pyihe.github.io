@@ -7,7 +7,7 @@ tags: [学习]
 ---
 
 ## Gitalk介绍
- 
+
 [gitalk](https://github.com/gitalk/gitalk)是一个通过为每篇文章创建issue作为评论的评论插件，还有另外一个选择便是[gitment](https://github.com/imsun/gitment)，但gitment已经很久没维护了，所以大部分人选择了仍在维护的gitalk.
 
 ## 添加前的准备
