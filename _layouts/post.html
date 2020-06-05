@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<link rel="stylesheet" href="/assets/css/gitalk.css">
 <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
+<script src="/assets/js/md5.min.js"></script>
 {% include post-head.html %}
 
 <body>
@@ -52,9 +53,9 @@
 
   <div>
     {% if site.comments.gitalk %}
-    <section class="post-footer-item comment">
-      <div id="gitalk_container"></div>
+    <section class="post-footer-item comment" style="padding-bottom: 4em">
       <div id="disqus_thread"></div>
+      <div id="gitalk_container"></div>
     </section>
     {% endif %}
   </div>
@@ -113,7 +114,6 @@
 
   {% include footer.html %}
   <script src="{{ "/assets/js/social-share.min.js" | relative_url }}"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
   <script>
     socialShare('.social-share', {
       sites: [
@@ -145,7 +145,7 @@
   {% if site.comments.gitalk %}
   <script>
     var gitalk = new Gitalk({
-      id: location.pathname,
+      id: md5(location.pathname),
       clientID: '{{ site.comments.gitalk_clientID }}',
       clientSecret: '{{ site.comments.gitalk_Secret }}',
       repo: '{{ site.comments.gitalk_repo }}',
