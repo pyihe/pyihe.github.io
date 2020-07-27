@@ -3,7 +3,7 @@ layout: post
 title: 'Mac通过homebrew安装supervisor，并添加process'
 date: 2020-05-30
 author: pyihe
-tags: 工具
+tags: [问题记录, supervisor]
 ---
 
 ## 一. 安装supervisor
