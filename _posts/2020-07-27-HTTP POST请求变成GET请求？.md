@@ -3,7 +3,7 @@ layout: post
 title: 'HTTP POST请求变成GET请求？'
 date: 2020-07-27
 author: pyihe
-tags: [问题记录, nginx]
+tags: [问题记录, nginx, http]
 ---
 
 ### 问题描述
