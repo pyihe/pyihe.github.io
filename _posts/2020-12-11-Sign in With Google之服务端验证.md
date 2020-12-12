@@ -3,7 +3,7 @@ layout: post
 title: 'Sign in With Google之服务端验证'
 date: 2020-12-11
 author: pyihe
-tags: [第三方登录]
+tags: 第三方登录
 ---
 
 ### 前言
