@@ -1,9 +1,9 @@
 ---
 layout: post
-title: 'Golang实现Sign in With Apple服务端登录验证'
+title: 'Sign in With Apple之服务端验证'
 date: 2020-11-05
 author: pyihe
-tags: [Golang, Apple]
+tags: [第三方登录]
 ---
 
 ### 介绍
