@@ -6,7 +6,7 @@ author: pyihe
 tags: [第三方登录]
 ---
 
-### 介绍
+### 前言
 
 2019年之后，对于Apple App来说，如果要支持第三方登录，则必须同时支持苹果的第三方登录，即[Sign in With Apple](https://developer.apple.com/sign-in-with-apple/), 本文主要介绍如何使用Go语言实现Sign in With Apple时服务端的验证, 即[Generate and Validate Tokens](https://developer.apple.com/documentation/sign_in_with_apple/generate_and_validate_tokens)。或者不支持第三方登录, 直接使用电话号码或者账号密码的方式进行注册以及登录。
 
